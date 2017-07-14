@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RepubliqueBot.Actions;
 using RepubliqueBot.Models;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace RepubliqueBot
 {
@@ -29,9 +30,12 @@ namespace RepubliqueBot
             IAction action;
             switch (update.Message.Command)
             {
-                //
-                case Command.VoteBan : action = new VoteBanAction(update.Message) ; break;
-                default : action = new NoneAction(); break;
+                //TODO: add user concerned by vote here
+                case Models.Commands.VoteBan: action = new VoteBanAction(update.Message); break;
+                case Models.Commands.VoteMute: action = new VoteMuteAction(update.Message); break;
+                case Models.Commands.VoteNoSticker: action = new VoteNoStickerAction(update.Message); break;
+                case Models.Commands.VoteRelease: action = new VoteReleaseAction(update.Message); break;
+                default: action = new NoneAction(); break;
             }
             action.execute();
             return Content("OK");

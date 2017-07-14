@@ -9,14 +9,14 @@ namespace RepubliqueBot.Actions
     public class VoteAction : IAction
     {
         Message message { get; set; }
-        User userAffected { get; set; }
+        string userAffected { get; set; }
 
         private string returnMessage;
         private string inlineKeyboard;
 
-        private Dictionary<User, Boolean> votes;
+        private Dictionary<string, Boolean> votes;
 
-        public VoteAction(Message msg, User u, Command type)
+        public VoteAction(Message msg, string u, Commands type)
         {
             //Get initial message
             this.message = msg;
@@ -26,30 +26,29 @@ namespace RepubliqueBot.Actions
 
             switch (type)
             {
-                case Command.VoteBan: voteType = "voteBan"; break;
-                case Command.VoteMute: voteType = "voteMute"; break;
+                case Commands.VoteBan: voteType = "voteBan"; break;
+                case Commands.VoteMute: voteType = "voteMute"; break;
 
                 default: return;
             }
 
             //Craft inline keyboard
-            inlineKeyboard = "[{text:'Yes',callback_data:'yes_" + type + "_" + u.Id + "'},{text:'No',callback_data:'no_" + type + "_" + u.Id + "'}]";
+            inlineKeyboard = "[{text:'Yes',callback_data:'yes_" + type + "_" + u + "'},{text:'No',callback_data:'no_" + type + "_" + u + "'}]";
 
             //Write message
             //TODO: get vote number from settings
-            returnMessage = "Initiated " + voteType + " for " + u.Id + ". \n 5 Votes needed.";
+            returnMessage = "Initiated " + voteType + " for " + u + ". \n 5 Votes needed.";
 
-            votes = new Dictionary<User, Boolean>();
+            votes = new Dictionary<string, Boolean>();
 
         }
 
         void IAction.execute()
         {
-            TelegramService service = new TelegramService();
-            service.SendMessage(message.Chat.Id.ToString(), returnMessage, inlineKeyboard);
+            TelegramService.SendMessage(message.Chat.Id, returnMessage, inlineKeyboard);
         }
 
-        void AddVote(User u, Boolean vote)
+        void AddVote(string u, Boolean vote)
         {
             if (votes.ContainsKey(u))
                 votes[u] = vote;
