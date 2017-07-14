@@ -15,14 +15,17 @@ namespace RepubliqueBot.Models
         [JsonProperty("text")]
         public string Text { get; set; }
 
-        public Command Command {
+        public Commands Command {
             get
             {
                 string cmdTxt = this.Text == null ? String.Empty : this.Text.Split(' ')[0].Replace("@RepubliqueBot", String.Empty);
-                Command cmd;
+                Commands cmd;
                 switch (cmdTxt){
-                    case "/voteban" : cmd = Command.VoteBan; break;
-                    default : cmd = Command.None; break;
+                    case "/voteban" : cmd = Commands.VoteBan; break;
+                    case "/votemute" : cmd = Commands.VoteMute; break;
+                    case "/votenosticker" : cmd = Commands.VoteNoSticker; break;
+                    case "/voterelease" : cmd = Commands.VoteRelease; break;
+                    default : cmd = Commands.None; break;
             }
                 return cmd;
             }

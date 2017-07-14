@@ -20,5 +20,4 @@ namespace RepubliqueBot.Actions
             String message = "Banning " + userAffected.Id;
         }
     }
-
 }
