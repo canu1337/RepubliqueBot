@@ -8,10 +8,9 @@ namespace RepubliqueBot.Actions
 {
     public class VoteAction : IAction
     {
-        Message message { get; set; }
-        string userAffected { get; set; }
-
-        string voteType { get; set; }
+        protected Message message { get; set; }
+        protected string userAffected { get; set; }
+        protected string voteType { get; set; }
 
         private string returnMessage;
         private string inlineKeyboard;
