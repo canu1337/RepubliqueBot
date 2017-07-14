@@ -18,7 +18,7 @@ namespace RepubliqueBot.Models
         public Command Command {
             get
             {
-                string cmdTxt = this.Text == null ? String.Empty : this.Text.Split(' ')[0];
+                string cmdTxt = this.Text == null ? String.Empty : this.Text.Split(' ')[0].Replace("@RepubliqueBot", String.Empty);
                 Command cmd;
                 switch (cmdTxt){
                     case "/voteban" : cmd = Command.VoteBan; break;
