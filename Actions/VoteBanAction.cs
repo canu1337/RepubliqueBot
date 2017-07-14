@@ -1,13 +1,10 @@
 using System;
 using RepubliqueBot.Models;
-using System.Collections.Generic;
 
 namespace RepubliqueBot.Actions
 {
-
     public class VoteBanAction : VoteAction
     {
- 
         public VoteBanAction(Message msg, string u, Commands type = Commands.VoteBan) : base(msg, u, type)
         {
             voteType = "voteBan";

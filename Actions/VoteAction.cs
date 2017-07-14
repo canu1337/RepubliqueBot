@@ -24,7 +24,6 @@ namespace RepubliqueBot.Actions
             this.userAffected = u;
 
             votes = new Dictionary<string, Boolean>();
-
         }
 
         void IAction.execute()
@@ -42,10 +41,14 @@ namespace RepubliqueBot.Actions
         void AddVote(string u, Boolean vote)
         {
             if (votes.ContainsKey(u))
+            {
                 votes[u] = vote;
+            }
             else
+            {
                 votes.Add(u, vote);
-
+            }
+            
             CountVotes();
         }
 
@@ -63,7 +66,9 @@ namespace RepubliqueBot.Actions
             }
 
             if (numberOfVotes >= 5)
+            {
                 CallAction();
+            }
         }
 
         private void CallAction()
