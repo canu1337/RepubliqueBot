@@ -14,8 +14,7 @@ namespace RepubliqueBot.Actions
 
         void IAction.execute()
         {
-            TelegramService service = new TelegramService();
-            service.SendMessage(message.Chat.Id.ToString(), ">insinuant que c'est implémenté");
+            TelegramService.SendMessage(message.Chat.Id, ">insinuant que c'est implémenté");
         }
     }
 }
