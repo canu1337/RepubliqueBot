@@ -28,7 +28,8 @@ namespace RepubliqueBot.Actions
             {
                 case Commands.VoteBan: voteType = "voteBan"; break;
                 case Commands.VoteMute: voteType = "voteMute"; break;
-
+                case Commands.VoteNoSticker: voteType = "voteNoSticker"; break;
+                case Commands.VoteRelease: voteType = "voteRelease"; break;
                 default: return;
             }
 
