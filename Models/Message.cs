@@ -25,6 +25,8 @@ namespace RepubliqueBot.Models
                     case "/votemute" : cmd = Commands.VoteMute; break;
                     case "/votenosticker" : cmd = Commands.VoteNoSticker; break;
                     case "/voterelease" : cmd = Commands.VoteRelease; break;
+                    case "/settitle" : cmd = Commands.SetTitle; break;
+                    case "/setpicture" : cmd = Commands.SetPicture; break;
                     default : cmd = Commands.None; break;
             }
                 return cmd;
@@ -34,7 +36,7 @@ namespace RepubliqueBot.Models
         public string Param {
             get 
             {
-                return this.Text == null ? String.Empty : this.Text.Replace(this.Text.Split(' ')[0].Replace("@RepubliqueBot", String.Empty), String.Empty);
+                return this.Text == null ? String.Empty : this.Text.Replace(this.Text.Split(' ')[0], String.Empty);
             }
         }
     }

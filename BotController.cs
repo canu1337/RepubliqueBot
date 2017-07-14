@@ -31,10 +31,11 @@ namespace RepubliqueBot
             switch (update.Message.Command)
             {
                 //TODO: add user concerned by vote here
-                case Models.Commands.VoteBan: action = new VoteBanAction(update.Message); break;
+                case Models.Commands.VoteBan: action = new VoteBanAction(update.Message, update.Message.Param); break;
                 case Models.Commands.VoteMute: action = new VoteMuteAction(update.Message); break;
                 case Models.Commands.VoteNoSticker: action = new VoteNoStickerAction(update.Message); break;
                 case Models.Commands.VoteRelease: action = new VoteReleaseAction(update.Message); break;
+                case Models.Commands.SetTitle: action = new SetTitleAction(update.Message); break;
                 default: action = new NoneAction(); break;
             }
             action.execute();

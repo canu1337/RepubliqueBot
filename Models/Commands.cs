@@ -8,6 +8,8 @@ namespace RepubliqueBot.Models {
         VoteBan,
         VoteMute,
         VoteNoSticker,
-        VoteRelease
+        VoteRelease,
+        SetTitle,
+        SetPicture
     };
 }

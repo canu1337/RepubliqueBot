@@ -21,8 +21,8 @@ namespace RepubliqueBot {
             var r = httpClient.PostAsync(TelegramService.getURL("sendMessage"), content).Result;
         }
 
-        public static void SetTitle (int group, string title) {
-            RepubliqueBot.Models.SetTitle msg = new RepubliqueBot.Models.SetTitle() { ChatId = group, Title = title };
+        public static void ChangeTitle (int group, string title) {
+            SetTitle msg = new SetTitle() { ChatId = group, Title = title };
             string json = JsonConvert.SerializeObject(msg, Newtonsoft.Json.Formatting.None, 
                             new JsonSerializerSettings { 
                                 NullValueHandling = NullValueHandling.Ignore

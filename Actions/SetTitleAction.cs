@@ -13,7 +13,7 @@ namespace RepubliqueBot.Actions
         } 
         void IAction.execute()
         {
-            TelegramService.SetTitle(message.Chat.Id, message.Param);
+            TelegramService.ChangeTitle(message.Chat.Id, message.Param);
         }
     }
 }

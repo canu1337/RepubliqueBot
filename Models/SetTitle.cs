@@ -3,7 +3,8 @@ using Newtonsoft.Json;
 
 namespace RepubliqueBot.Models
 {
-    public class SetTitle {
+    public class SetTitle 
+    {
         [JsonProperty("chat_id")]
         public int ChatId { get; set; }
         [JsonProperty("title")]
