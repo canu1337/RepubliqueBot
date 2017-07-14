@@ -11,6 +11,8 @@ namespace RepubliqueBot.Actions
         Message message { get; set; }
         string userAffected { get; set; }
 
+        string voteType { get; set; }
+
         private string returnMessage;
         private string inlineKeyboard;
 
@@ -22,30 +24,19 @@ namespace RepubliqueBot.Actions
             this.message = msg;
             this.userAffected = u;
 
-            String voteType = "";
-
-            switch (type)
-            {
-                case Commands.VoteBan: voteType = "voteBan"; break;
-                case Commands.VoteMute: voteType = "voteMute"; break;
-                case Commands.VoteNoSticker: voteType = "voteNoSticker"; break;
-                case Commands.VoteRelease: voteType = "voteRelease"; break;
-                default: return;
-            }
-
-            //Craft inline keyboard
-            inlineKeyboard = "[{text:'Yes',callback_data:'yes_" + type + "_" + u + "'},{text:'No',callback_data:'no_" + type + "_" + u + "'}]";
-
-            //Write message
-            //TODO: get vote number from settings
-            returnMessage = "Initiated " + voteType + " for " + u + ". \n 5 Votes needed.";
-
             votes = new Dictionary<string, Boolean>();
 
         }
 
         void IAction.execute()
         {
+            //Craft inline keyboard
+            inlineKeyboard = "[{text:'Yes',callback_data:'yes_" + voteType + "_" + userAffected + "'},{text:'No',callback_data:'no_" + voteType + "_" + userAffected + "'}]";
+
+            //Write message
+            //TODO: get vote number from settings
+            returnMessage = "Initiated " + voteType + " for " + userAffected + ". \n 5 Votes needed.";
+
             TelegramService.SendMessage(message.Chat.Id, returnMessage, inlineKeyboard);
         }
 
