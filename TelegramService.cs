@@ -14,8 +14,9 @@ namespace RepubliqueBot {
         public TelegramService () {
             this.httpClient = new HttpClient();
         }
-        public void SendMessage (int group, string text){
-            SendMessage msg = new SendMessage() { ChatId = group, Text = text };
+        public void SendMessage (int group, string text, string markup)
+        {
+            SendMessage msg = new SendMessage() { ChatId = group, Text = text, ReplyMarkup = markup };
             string json = JsonConvert.SerializeObject(msg, Newtonsoft.Json.Formatting.None, 
                             new JsonSerializerSettings { 
                                 NullValueHandling = NullValueHandling.Ignore

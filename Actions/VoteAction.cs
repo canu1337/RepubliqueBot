@@ -16,7 +16,7 @@ namespace RepubliqueBot.Actions
 
         private Dictionary<User, Boolean> votes;
 
-        public VoteAction(Message msg, User u, Command type)
+        public VoteAction(Message msg, User u, Commands type)
         {
             //Get initial message
             this.message = msg;
@@ -26,8 +26,10 @@ namespace RepubliqueBot.Actions
 
             switch (type)
             {
-                case Command.VoteBan: voteType = "voteBan"; break;
-                case Command.VoteMute: voteType = "voteMute"; break;
+                case Commands.VoteBan: voteType = "voteBan"; break;
+                case Commands.VoteMute: voteType = "voteMute"; break;
+                case Commands.VoteNoSticker: voteType = "voteNoSticker"; break;
+                case Commands.VoteRelease: voteType = "voteRelease"; break;
 
                 default: return;
             }
@@ -46,7 +48,7 @@ namespace RepubliqueBot.Actions
         void IAction.execute()
         {
             TelegramService service = new TelegramService();
-            service.SendMessage(message.Chat.Id.ToString(), returnMessage, inlineKeyboard);
+            service.SendMessage(message.Chat.Id, returnMessage, inlineKeyboard);
         }
 
         void AddVote(User u, Boolean vote)
