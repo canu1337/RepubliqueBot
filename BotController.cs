@@ -21,7 +21,10 @@ namespace RepubliqueBot
             IAction action;
             switch (update.Message.Command)
             {
-                case Command.VoteBan : action = new VoteBanAction(update.Message) ; break;
+                case Models.Commands.VoteBan : action = new VoteBanAction(update.Message); break;
+                case Models.Commands.VoteMute : action = new VoteMuteAction(update.Message); break;
+                case Models.Commands.VoteNoSticker : action = new VoteNoStickerAction(update.Message); break;
+                case Models.Commands.VoteRelease : action = new VoteReleaseAction(update.Message); break;
                 default : action = new NoneAction(); break;
             }
             action.execute();

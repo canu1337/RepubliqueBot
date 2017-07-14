@@ -3,18 +3,19 @@ using RepubliqueBot.Models;
 
 namespace RepubliqueBot.Actions
 {
-    public class VoteBanAction : IAction
+    public class VoteNoStickerAction : IAction
     {
         Message message { get ; set; }
 
-        public VoteBanAction (Message msg)
+        public VoteNoStickerAction (Message msg)
         {
             this.message = msg;
         } 
+
         void IAction.execute()
         {
             TelegramService service = new TelegramService();
-            service.SendMessage(message.Chat.Id, ">insinuant que c'est implémenté");
+            service.SendMessage(message.Chat.Id.ToString(), ">insinuant que c'est implémenté");
         }
     }
 }
