@@ -1,0 +1,16 @@
+using System;
+using Newtonsoft.Json;
+
+namespace RepubliqueBot.Models
+{
+    public class SendMessage {
+        [JsonProperty("chat_id")]
+        public string ChatId { get; set; }
+        [JsonProperty("text")]
+        public string Text { get; set; }
+        [JsonProperty("reply_to_message_id")]
+        public int ReplyTo { get; set; }
+        [JsonProperty("reply_markup")]
+        public string ReplyMarkup { get; set; }
+    }
+}

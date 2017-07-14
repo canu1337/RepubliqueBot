@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using RepubliqueBot.Actions;
 using RepubliqueBot.Models;
 
 namespace RepubliqueBot
@@ -17,11 +18,13 @@ namespace RepubliqueBot
             var req = Request.Body;
             var json = new StreamReader(req).ReadToEnd();
             Update update = JsonConvert.DeserializeObject<Update>(json);
+            IAction action;
             switch (update.Message.Command)
             {
-                case Command.VoteBan : ; break;
-                default : break;
+                case Command.VoteBan : action = new VoteBanAction(update.Message) ; break;
+                default : action = new NoneAction(); break;
             }
+            action.execute();
             return Content("OK");
         }
     }
