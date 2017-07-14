@@ -36,7 +36,7 @@ namespace RepubliqueBot.Models
         public string Param {
             get 
             {
-                return this.Text == null ? String.Empty : this.Text.Replace(this.Text.Split(' ')[0], String.Empty);
+                return this.Text == null ? String.Empty : this.Text.Replace(this.Text.Split(' ')[0], String.Empty).Trim();
             }
         }
     }
