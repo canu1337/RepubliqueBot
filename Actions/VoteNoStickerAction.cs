@@ -3,17 +3,18 @@ using RepubliqueBot.Models;
 
 namespace RepubliqueBot.Actions
 {
-    public class VoteNoStickerAction : IAction
+    public class VoteNoStickerAction : VoteAction
     {
-        Message message { get ; set; }
-
-        public VoteNoStickerAction (Message msg)
+        public VoteNoStickerAction(Message msg, string u, Commands type = Commands.VoteNoSticker) : base(msg, u, type)
         {
-            this.message = msg;
+            voteType = "voteNoSticker";
         } 
 
-        void IAction.execute()
+        private void CallAction()
         {
+            //add ban action here, 
+            String banMessage = "No stickers for " + userAffected;
+
             TelegramService.SendMessage(message.Chat.Id, ">insinuant que c'est implémenté");
         }
     }
