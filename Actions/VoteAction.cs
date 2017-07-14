@@ -13,7 +13,7 @@ namespace RepubliqueBot.Actions
         protected string voteType { get; set; }
 
         private string returnMessage;
-        private string inlineKeyboard;
+        private InlineKeyboard inlineKeyboard;
 
         private Dictionary<string, Boolean> votes;
 
@@ -29,7 +29,10 @@ namespace RepubliqueBot.Actions
         void IAction.execute()
         {
             //Craft inline keyboard
-            inlineKeyboard = "[{text:'Yes',callback_data:'yes_" + voteType + "_" + userAffected + "'},{text:'No',callback_data:'no_" + voteType + "_" + userAffected + "'}]";
+            inlineKeyboard = new InlineKeyboard(
+                new InlineButton() {Text = "Yes", CallbackData = "yes_" + voteType + "_" + userAffected},
+                new InlineButton() {Text = "No", CallbackData = "no_" + voteType + "_" + userAffected}
+            );        
 
             //Write message
             //TODO: get vote number from settings

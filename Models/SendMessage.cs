@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace RepubliqueBot.Models
@@ -11,6 +12,6 @@ namespace RepubliqueBot.Models
         [JsonProperty("reply_to_message_id")]
         public int? ReplyTo { get; set; }
         [JsonProperty("reply_markup")]
-        public string ReplyMarkup { get; set; }
+        public InlineKeyboard ReplyMarkup { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using Newtonsoft.Json;
@@ -10,7 +11,7 @@ namespace RepubliqueBot {
         private static string telegramURL = "https://api.telegram.org/bot{0}/{1}";
         private static string token = "382765279:AAEnglUFw0z0ExA5HrI9VwSKaLq2DM3t68w";
         private static HttpClient httpClient = new HttpClient();
-        public static void SendMessage (int group, string text, string markup = null)
+        public static void SendMessage (int group, string text, InlineKeyboard markup = null)
         {
             SendMessage msg = new SendMessage() { ChatId = group, Text = text, ReplyMarkup = markup };
             string json = JsonConvert.SerializeObject(msg, Newtonsoft.Json.Formatting.None, 
