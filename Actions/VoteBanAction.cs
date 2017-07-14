@@ -8,7 +8,7 @@ namespace RepubliqueBot.Actions
     public class VoteBanAction : VoteAction
     {
  
-        public VoteBanAction(Message msg, string u, Commands type = Commands.VoteBan) : base(msg, u, type)
+        public VoteBanAction(Message msg, string u) : base(msg, u)
         {
             voteType = "voteBan";
         }

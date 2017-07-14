@@ -17,7 +17,7 @@ namespace RepubliqueBot.Actions
 
         private Dictionary<string, Boolean> votes;
 
-        public VoteAction(Message msg, string u, Commands type)
+        public VoteAction(Message msg, string u)
         {
             //Get initial message
             this.message = msg;
