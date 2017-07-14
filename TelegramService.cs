@@ -13,8 +13,8 @@ namespace RepubliqueBot {
         public TelegramService () {
             this.httpClient = new HttpClient();
         }
-        public void SendMessage (string group, string text){
-            SendMessage msg = new SendMessage() { ChatId = group, Text = text };
+        public void SendMessage (string group, string text, string markup){
+            SendMessage msg = new SendMessage() { ChatId = group, Text = text, ReplyMarkup = markup };
             StringContent content = new StringContent(msg.ToString(), Encoding.UTF8, "application/json");
             var r = httpClient.PostAsync(this.getURL(TelegramMethod.SendMessage), content);
         }

@@ -1,21 +1,23 @@
 using System;
 using RepubliqueBot.Models;
+using System.Collections.Generic;
 
 namespace RepubliqueBot.Actions
 {
-    public class VoteBanAction : IAction
+
+    public class VoteBanAction : VoteAction
     {
-        Message message { get ; set; }
+        Message message { get; set; }
+        User userAffected { get; set; }
 
-        public VoteBanAction (Message msg)
+        public VoteBanAction(Message msg, User u, Command type = Command.VoteBan) : base(msg, u, type)
         {
-            this.message = msg;
-        } 
-
-        void IAction.execute()
+        }
+        
+        private void CallAction()
         {
-            TelegramService service = new TelegramService();
-            service.SendMessage(message.Chat.Id.ToString(), ">insinuant que c'est implémenté");
+            //add ban action here, 
+            String message = "Banning " + userAffected.Id;
         }
     }
 

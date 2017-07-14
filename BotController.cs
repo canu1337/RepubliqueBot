@@ -13,6 +13,14 @@ namespace RepubliqueBot
 {
     public class BotController : Controller
     {
+
+        private IMemoryCache _cache;
+
+        public BotController(IMemoryCache memoryCache)
+        {
+            _cache = memoryCache;
+        }
+
         public ActionResult Index()
         {
             var req = Request.Body;
@@ -21,6 +29,7 @@ namespace RepubliqueBot
             IAction action;
             switch (update.Message.Command)
             {
+                //
                 case Command.VoteBan : action = new VoteBanAction(update.Message) ; break;
                 default : action = new NoneAction(); break;
             }
